@@ -1,5 +1,4 @@
 #include <iostream>
-#include <algorithm>  // For sort() function, optional here for simplicity
 using namespace std;
 
 // Function to sort the roll numbers (using simple bubble sort)
@@ -35,6 +34,33 @@ void LinearSearch(int rollnumber[], int n, int target) {
     cout << "Student with Roll No " << target << " isn't enrolled.\n";
 }
 
+void BinarySearch(int rollnumber[], int n, int target) {
+//  Function to perform Binary search
+    int left = 0;
+    int right = n - 1;
+    
+    while (left <= right) {
+        int mid = left + right / 2;
+        
+        // Check if target is present at mid
+        if (rollnumber[mid] == target) {
+            cout << "Student with Roll No " << target << " is enrolled.\n";
+            return;  // Exit the function once the student is found
+        }
+        
+        // If target is greater, ignore the left half
+        if (rollnumber[mid] < target) {
+            left = mid + 1;
+        }
+        // If target is smaller, ignore the right half
+        else {
+            right = mid - 1;
+        }
+    }
+
+    cout<<"Student with Roll No "<<target<<" isn't enrolled\n";
+}
+
 int main() {
     int n;
 
@@ -62,6 +88,9 @@ int main() {
 
     // Perform Linear Search
     LinearSearch(rollnumber, n, target);
+
+    // Perform Binary Search
+    BinarySearch(rollnumber, n, target);
 
     return 0;
 }
