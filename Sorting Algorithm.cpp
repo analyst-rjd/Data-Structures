@@ -32,6 +32,14 @@ void Display(int arr[], int n){
     }
 }
 
+void Top5(int arr[], int n){
+    cout<<"Top 5 students:"<<endl;
+    
+    for(int i=n-1; i>n-6; --i){
+        cout<<arr[i]<<endl;
+    }
+}
+
 int main(){
     int n;
     cout<<"Enter the number of students:";
@@ -52,6 +60,7 @@ int main(){
     BubbleSort(percentages, n);
     Display(percentages, n);
 
+    Top5(percentages, n);
 
     return 0;
 }
